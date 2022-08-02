@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  root :to => 'home#index'
+  constraints(ClientDomainConstraint.new) do
+    root :to => 'home#index'
+  end
 
+  constraints(AdminDomainConstraint.new) do
+
+  end
 end
